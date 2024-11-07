@@ -1,4 +1,4 @@
-#  Letter size in tags - 1 if startstwith uppercasse letter, 0 if starts with lowercase letter
+#  Letter size in tags - 1 if startstwith uppercase letter, 0 if starts with lowercase letter
 import re
 
 def tag_case(html_content):
@@ -35,39 +35,39 @@ def binary_to_ascii(binary_list):
 
 given_html = """
 <doctype>
-<Html>
-<Head>
-    <title>Lorem Ipsum</Title>
-</head>
-<body>
-    <div>
-        <div>
-            <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</P>
-        </div>
-    </div>
-    <Section>
-        <section>
-            <H1>Lorem Ipsum Title</h1>
-        </Section>
-    </Section>
-    <footer>
+    <Html>
+    <Head>
+        <Title>Lorem Ipsum</Title>
+    </head>
+    <body>
+        <Div>
+            <div>
+                <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</P>
+            </div>
+        </Div>
+        <Section>
+            <Section>
+                <H1>Lorem Ipsum Title</h1>
+            </Section>
+        </section>
         <Footer>
-            <P>Footer content goes here.</p>
+            <Footer>
+                <P>Footer content goes here.</P>
+            </Footer>
         </footer>
-    </footer>
-    <Article>
         <Article>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</P>
+            <Article>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </article>
         </Article>
-    </article>
-    <input>
-    <input>
-    <Form>
+        <input>
+        <input>
         <Form>
-            <textarea>Lorem ipsum dolor sit amet...</Textarea>
+            <Form>
+                <Textarea>Lorem ipsum dolor sit amet...</textarea>
+            </form>
         </Form>
-    </Form>
-    </Form>
+        </form><b></b><B></B><b></b><b></b>
 """
 
 # print("Binary:", tag_case(given_html))
