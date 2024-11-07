@@ -59,7 +59,7 @@ def run_algorithm(module_name, is_encode, message_entry=None):
 
 # main
 root = tk.Tk()
-root.title("Aplikacja z zakładkami")
+root.title("Steganography app")
 root.geometry("500x400")
 
 notebook = ttk.Notebook(root)
