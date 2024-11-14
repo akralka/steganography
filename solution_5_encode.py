@@ -26,7 +26,7 @@ def process_html(given_html, message):
             bit_index += 1
 
             if bit_value == 1:
-                modified_tag = f"< {tag}>"
+                modified_tag = re.sub(r'>\s*$', ' >', part) 
             else:
                 continue
 
