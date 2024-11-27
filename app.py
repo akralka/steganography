@@ -13,7 +13,9 @@ tabs = {
     "4E-lettercase": "solution_4_encode",
     "4D-lettercase": "solution_4_decode",
     "5E-space": "solution_5_encode",
-    "5D-space": "solution_5_decode"
+    "5D-space": "solution_5_decode",
+    "project_E":"projekt_solution_1_encode",
+    "project_D":"projekt_solution_1_decode"
 }
 
 def open_html_file():
