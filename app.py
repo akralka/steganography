@@ -10,7 +10,8 @@ modules = {
     "3-Quot": ("solution_3_encode", "solution_3_decode"),
     "4-lettercase": ("solution_4_encode", "solution_4_decode"),
     "5-space": ("solution_5_encode", "solution_5_decode"),
-    "project_1": ("projekt_solution_1_encode", "projekt_solution_1_decode")
+    "project_1": ("projekt_solution_1_encode", "projekt_solution_1_decode"),
+    "project_2": ("projekt_solution_2_encode", "projekt_solution_2_decode")
 }
 
 def open_html_file():
@@ -81,6 +82,10 @@ root.title("Steganography App")
 
 frame = ttk.Frame(root)
 frame.pack(expand=True, fill="both", padx=10, pady=10)
+
+from help import HELP_TEXT
+help_button = tk.Button(frame, text="Help", command=lambda: messagebox.showinfo("Help", HELP_TEXT))
+help_button.pack(pady=5)
 
 # Encoding section
 encode_label = tk.Label(frame, text="Encode a Message", font=('Arial', 14))
