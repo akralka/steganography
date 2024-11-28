@@ -9,7 +9,8 @@ modules = {
     "2-Permutation": ("solution_2_encode", "solution_2_decode"),
     "3-Quot": ("solution_3_encode", "solution_3_decode"),
     "4-lettercase": ("solution_4_encode", "solution_4_decode"),
-    "5-space": ("solution_5_encode", "solution_5_decode")
+    "5-space": ("solution_5_encode", "solution_5_decode"),
+    "project_1": ("projekt_solution_1_encode", "projekt_solution_1_decode")
 }
 
 def open_html_file():
