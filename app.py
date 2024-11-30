@@ -84,7 +84,26 @@ frame = ttk.Frame(root)
 frame.pack(expand=True, fill="both", padx=10, pady=10)
 
 from help import HELP_TEXT
-help_button = tk.Button(frame, text="Help", command=lambda: messagebox.showinfo("Help", HELP_TEXT))
+def show_help():
+    help_window = tk.Toplevel(root)
+    help_window.title("Help")
+    help_window.geometry("600x400")  # Set a larger size for the help window
+
+    # Add a scrollable Text widget
+    text_widget = tk.Text(help_window, wrap=tk.WORD, font=("Arial", 12), padx=10, pady=10)
+    text_widget.pack(expand=True, fill="both")
+
+    # Add the help text
+    text_widget.insert(tk.END, HELP_TEXT)
+    text_widget.configure(state="disabled")  # Make it read-only
+
+    # Add a scrollbar
+    scrollbar = ttk.Scrollbar(help_window, command=text_widget.yview)
+    text_widget.configure(yscrollcommand=scrollbar.set)
+    scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+# Replace the existing help button command
+help_button = tk.Button(frame, text="Help", command=show_help)
 help_button.pack(pady=5)
 
 # Encoding section

@@ -76,8 +76,14 @@ def tag_to_binary(tag, real):
         if idx == -1:
             return ''
         mapping.append((idx, (attr, default)))
-    for real_attr in real[:-1].split()[1:]:
-        attr_name, _ = real_attr.split(sep='=')
+    attribute_regex = r'([a-zA-Z_:][a-zA-Z0-9:._-]*)(?:\s*=\s*("(?:\\.|[^"])*"|' \
+                r"'(?:\\.|[^'])*'|[^>\s]+))?"
+
+    parts = real.strip('<>').split(maxsplit=1)
+    tag_name = parts[0]
+    attributes = parts[1] if len(parts) > 1 else ""
+    matches = re.findall(attribute_regex, attributes)
+    for attr_name, _ in matches:
         if attr_name.isupper():
             bin_mask += '1'
         else:

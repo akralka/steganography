@@ -37,9 +37,9 @@ def extract_password(html_content):
                 reversed_binary = [None] * 8
                 for idx, i in enumerate(ordering):
                     reversed_binary[i] = number[idx]
+                reversed_binary = ''.join(reversed_binary)
                 number = hex(int(reversed_binary, 2))[2:]
                 hex_value = number
-
                 results.append(chr(int(hex_value, 16)))
             except ValueError:
                 continue
