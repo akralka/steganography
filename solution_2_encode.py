@@ -105,21 +105,29 @@ def encode(html, data):
     data_bit_stream = ''.join(format(ord(char), '08b') for char in data)
     output = ""
     tags = find_all_tags(html)
+    for tag_matched in tags:
+        if not data_bit_stream:
+            output += html
+            return output
+        idx = html.find(tag_matched)
+        tag = tag_matched.split()[0][1:].replace('>', '')
+        encodable_bits = get_encodable_bits(tag)
+        output += html[:idx]
+        number = int(data_bit_stream[:encodable_bits], 2)
+        data_bit_stream = data_bit_stream[encodable_bits:]  # bits left
+        output += encode_number_in_tag(tag, number, tag_matched)
+        html = html[idx + len(tag_matched):]
 
-    while html:
-        for tag_matched in tags:
-            if not data_bit_stream:
-                output += html
-                return output
+    while data_bit_stream:
+        tag = "<font>"
+        encodable_bits = get_encodable_bits('font')
+        number = int(data_bit_stream[:encodable_bits], 2)
+        data_bit_stream = data_bit_stream[encodable_bits:]
+        output += encode_number_in_tag('font', number, '<font>')
+        output += '</font>'
+        
+    output += html
 
-            idx = html.find(tag_matched)
-            tag = tag_matched.split()[0][1:].replace('>', '')
-            encodable_bits = get_encodable_bits(tag)
-            output += html[:idx]
-            number = int(data_bit_stream[:encodable_bits], 2)
-            data_bit_stream = data_bit_stream[encodable_bits:]  # bits left
-            output += encode_number_in_tag(tag, number, tag_matched)
-            html = html[idx + len(tag_matched):]
     return output
 
 def process_html(html_content, message):

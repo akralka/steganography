@@ -10,7 +10,7 @@ def ascii_to_hex_pairs(message):
         ordering = list(range(8))
         random.shuffle(ordering)
         binaries[i] = ''.join([binary[j] for j in ordering])
-    hex_values = [hex(int(binary, 2))[2:] for binary in binaries]
+    hex_values = [hex(int(binary, 2))[2:].zfill(2) for binary in binaries]
     paired_hex = []
 
     for i in range(0, len(hex_values) - 1, 2):

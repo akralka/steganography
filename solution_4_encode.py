@@ -21,17 +21,21 @@ def process_html(given_html, message):
 
     for num, part in enumerate(html_parts):
         if part.startswith('<') and bit_index < len(binary_list):
-            tag = re.findall(r'<(/?\w+)', part)[0] 
-            bit_value = binary_list[bit_index]
-            bit_index += 1
+            tag_match = re.match(r'<(/?\w+)', part)
+            if tag_match:
+                tag = tag_match.group(1)  
+                bit_value = binary_list[bit_index]
+                bit_index += 1
 
-            if not tag.startswith('/'):
-                modified_tag = f"<{tag.capitalize()}>" if bit_value == 1 else f"<{tag.lower()}>"
-            else:
-                modified_tag = f"</{tag[1:].capitalize()}>" if bit_value == 1 else f"</{tag[1:].lower()}>"
+                if not tag.startswith('/'):
+                    modified_tag = f"<{tag.capitalize()}>" if bit_value == 1 else f"<{tag.lower()}>"
+                else:
+                    modified_tag = f"</{tag[1:].capitalize()}>" if bit_value == 1 else f"</{tag[1:].lower()}>"
 
-            new_tags.append(modified_tag)
-            html_parts[num] = modified_tag 
+                new_tags.append(modified_tag)
+                html_parts[num] = modified_tag
+        else:
+            new_tags.append(part)
 
     modified_html = ''.join(html_parts)  
     return modified_html

@@ -1,4 +1,4 @@
-# Spaces in tags - 1 if starts with space, 0 if not.
+# Spaces in tags - 1 if ends with space, 0 if not.
 import re
 
 def extract_password(html_content):
