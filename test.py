@@ -16,7 +16,8 @@ from projekt_solution_2_decode import extract_password as project_2_decode
 
 test_strings = [
     "Short msg",
-    "Testing"
+    "Testing",
+    "Larger message that I want to work as well"
 ]
 
 modules = {
